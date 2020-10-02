@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class TestClass {
+
+	public static String DivideCharacters(String string) {
+		 String numbersStr = "";
+		 String lettersStr ="";
+		 String StringResult = "";
+		 
+		 String[] result = string.split(",");
+		 
+		 ArrayList<String> numbers = new  ArrayList<String>((Arrays. asList("0","1", "2", "3", "4", "5", "6","7","8","9")));
+		 
+		 for (int i = 0; i<result.length;i++) {
+			 for (int j = 0; j < result[i].length();j++) {
+				 if(numbers.contains(""+result[i].charAt(j))) {
+					 numbersStr+=result[i].charAt(j);
+					 if(j == result[i].length()-1) {
+						 numbersStr+=",";
+					 }
+				 }
+				 else {
+					 lettersStr+=result[i].charAt(j);
+					 if(j == result[i].length()-1) {
+						 lettersStr+=",";
+					 }
+				 }
+			 }		 
+		 }
+		 
+		 if (lettersStr.length() >0 && numbersStr.length()>0) {
+			 StringResult = lettersStr.substring(0, lettersStr.length()-1) + "|" + numbersStr.substring(0, numbersStr.length()-1) ;}
+			 else if(lettersStr.length() == 0 && numbersStr.length()>0) {StringResult= numbersStr.substring(0, numbersStr.length()-1);}
+			 else {StringResult = lettersStr.substring(0, lettersStr.length()-1);}
+		 
+		 return StringResult;
+	}
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String line = "1,2,phila,78,3,4,8,apple,spinach,1000,65555,selu";
+		String line1 = "1,2,5,8,9";
+		System.out.println(DivideCharacters(line));
+		
+		System.out.println(DivideCharacters(line1));
+	}
+
+}
